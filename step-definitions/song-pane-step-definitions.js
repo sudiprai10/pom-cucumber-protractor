@@ -6,18 +6,16 @@ AddNewSongPage = require('../pages/add-new-song'),
     songPanePage = new SongPanePage(),
     addNewSong = new AddNewSongPage();
 
-
 module.exports = function () {
-    this.Given (/^I am on the home page$/, function (done) {
+    this.Given (/^I am on the home page and I open new song panel$/, function (done) {
         songPanePage.openNewSongPage().then(function (){
           done();
         });
     });
 
-    this.When (/^I open add new song page$/, function (done) {
+    this.When (/^I should able to add song with "([^"]*)", "([^"]*)", "([^"]*)" and "([^"]*)"$/, function (key, signature, language, visibility) {
+      addNewSong.addNewSong(key, signature, language, visibility).then(function (){
 
-      addNewSong.addNewSong().then(function (){
-        done();
       });
     });
 
